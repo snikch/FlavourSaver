@@ -12,6 +12,16 @@ module FlavourSaver
   autoload :Template,       'flavour_saver/template'
   autoload :NodeCollection, 'flavour_saver/node_collection'
 
+  @standalone = false
+
+  def self.standalone=(val)
+    @standalone=val
+  end
+
+  def self.standalone
+    @standalone
+  end
+
   if defined? Rails
     class Engine < Rails::Engine
     end

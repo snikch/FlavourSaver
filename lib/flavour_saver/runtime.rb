@@ -102,7 +102,7 @@ module FlavourSaver
     def evaluate_partial(node)
       _context = context
       _context = evaluate_argument(node.context) if node.context
-      if defined?(::Rails) 
+      if !FS.standalone && defined?(::Rails)
         context.send(:render, :partial => node.name, :object => _context)
       else
         partial = Partial.fetch(node.name)
