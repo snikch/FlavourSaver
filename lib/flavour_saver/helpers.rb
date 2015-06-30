@@ -76,6 +76,11 @@ module FlavourSaver
         # nothing. A good place for bugs to hide.
         @source.send(name, *args, &b) if @source.respond_to? name
       end
+
+      # Overwrite the kernel p method to ensure p vars aren't ignored
+      def p
+        @source.p
+      end
     end
 
     module_function
